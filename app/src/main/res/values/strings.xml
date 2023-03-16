@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">AppForElderlyProtoElec</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hour_x">Hour x</string>
+    <string name="cycle">Cycle</string>
+    <string name="hike">Hike</string>
+    <string name="jog">Jog</string>
+    <string name="thirty_min_cardio">30 minute cardio</string>
+    <string name="upper_body">20 minute upper body workout</string>
+    <string name="walk">Walk</string>
+    <string name="swim">Swim</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="yoga">Yoga</string>
+    <string name="yoga_for_joint_pain">15 minute yoga to ease joint pain</string>
+    <string name="yoga_20_minutes">Vinyasa flow 20 minute yoga</string>
+    <string name="ten_min_lunge">10 minute lunge variations</string>
+    <string name="rain_desc">Looks like it is raining, how about you try one of the following exercises?</string>
+    <string name="cloudyDescr">Looks like it is cloudy, how about you try one of the following exercises?</string>
+    <string name="sunnyDesc">Looks like it is going to be sunny, how about you try one of these activities?</string>
+</resources>

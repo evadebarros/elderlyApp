@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EBEFF3"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+
+        android:layout_width="411dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/relativeLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="241dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Your Location"
+            android:layout_below="@+id/currentWeatherView"
+            android:textAlignment="center"
+            android:layout_centerHorizontal="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#6E6969"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/currentWeatherView" />
+
+        <ImageView
+            android:id="@+id/currentWeatherView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="6dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.49"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+        <TextView
+            android:id="@+id/currentTemp"
+            android:layout_width="97dp"
+            android:layout_height="31dp"
+            android:layout_marginTop="16dp"
+            android:text="degrees C"
+            android:layout_below="@+id/location"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#6E6969"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/location" />
+
+        <HorizontalScrollView
+            android:id="@+id/horizontalScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:background="#C6D2DF"
+            android:elevation="15dp"
+            android:fillViewport="true"
+            android:layout_below="@+id/currentTemp"
+            app:layout_constraintTop_toBottomOf="@+id/currentTemp">
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/button"
+                        android:layout_width="75dp"
+                        android:layout_height="80dp"
+
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/hour_x"
+                        android:elevation="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/cloudy"
+
+                        />
+
+                    <TextView
+                        android:layout_width="75dp"
+                        android:layout_height="80dp"
+                        android:layout_below="@id/button"
+                        android:elevation="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:text="Hour 1 "
+                        android:textAlignment="center"
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/button1"
+                        android:layout_width="75dp"
+                        android:layout_height="80dp"
+
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/hour_x"
+                        android:elevation="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/cloudy"
+
+                        />
+
+                    <TextView
+                        android:layout_width="75dp"
+                        android:layout_height="80dp"
+                        android:layout_below="@id/button1"
+                        android:elevation="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:text="Hour 2"
+                        android:textAlignment="center"
+
+
+                        android:textColor="@color/black"
+
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/button2"
+                        android:layout_width="75dp"
+                        android:layout_height="80dp"
+
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/hour_x"
+                        android:elevation="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/cloudy"
+
+                        />
+
+                    <TextView
+                        android:layout_width="75dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/button2"
+                        android:elevation="10dp"
+                        android:paddingHorizontal="10dp"
+
+
+                        android:text="Hour 3 "
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/button3"
+                        android:layout_width="75dp"
+                        android:layout_height="80dp"
+
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/hour_x"
+                        android:elevation="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/cloudy"
+
+                        />
+
+                    <TextView
+                        android:layout_width="75dp"
+                        android:layout_height="80dp"
+                        android:layout_below="@id/button3"
+
+                        android:elevation="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:text="Hour 4 "
+                        android:textAlignment="center"
+
+                        android:textColor="@color/black"
+
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/button4"
+                        android:layout_width="75dp"
+                        android:layout_height="80dp"
+
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/hour_x"
+                        android:elevation="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/cloudy"
+
+                        />
+
+                    <TextView
+                        android:layout_width="75dp"
+                        android:layout_height="80dp"
+                        android:layout_below="@id/button4"
+                        android:elevation="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:text="Hour 5 "
+                        android:textAlignment="center"
+
+
+                        android:textColor="@color/black"
+
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/button5"
+                        android:layout_width="75dp"
+                        android:layout_height="80dp"
+
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/hour_x"
+                        android:elevation="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/cloudy"
+
+                        />
+
+                    <TextView
+                        android:layout_width="75dp"
+                        android:layout_height="80dp"
+                        android:layout_below="@id/button5"
+                        android:elevation="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:text="Hour 5 "
+                        android:textAlignment="center"
+
+
+                        android:textColor="@color/black"
+
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/button6"
+                        android:layout_width="75dp"
+                        android:layout_height="80dp"
+
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/hour_x"
+                        android:elevation="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/cloudy"
+
+                        />
+
+                    <TextView
+                        android:layout_width="75dp"
+                        android:layout_height="80dp"
+                        android:layout_below="@id/button6"
+                        android:elevation="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:text="Hour 6 "
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/button7"
+                        android:layout_width="75dp"
+                        android:layout_height="80dp"
+
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/hour_x"
+                        android:elevation="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/cloudy"
+
+                        />
+
+                    <TextView
+                        android:layout_width="75dp"
+                        android:layout_height="80dp"
+                        android:layout_below="@id/button7"
+                        android:elevation="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:text="Hour 7 "
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+
+                        />
+                </RelativeLayout>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </HorizontalScrollView>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="82dp"
+        android:layout_height="204dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        app:layout_constraintVertical_bias="0.538">
+
+        <TextView
+            android:id="@+id/fiveDayText"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:layout_above="@id/scrollView"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="-37dp"
+            android:background="#7E8893"
+            android:fontFamily="sans-serif-medium"
+            android:text="5 day forecast"
+
+            android:textAlignment="center"
+
+            android:textColor="#E5F2F8"
+            android:textSize="14sp"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="206dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="35dp"
+            android:background="#C6D2DF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.538">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/dayButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+
+                        android:adjustViewBounds="true"
+                        android:contentDescription="Day x"
+                        android:elevation="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/cloudy"
+
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_below="@id/dayButton"
+                        android:elevation="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:text="Day 1 "
+                        android:textAlignment="center" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/dayButton1"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+
+                        android:adjustViewBounds="true"
+                        android:contentDescription="Day x"
+                        android:elevation="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/cloudy"
+
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_below="@id/dayButton1"
+                        android:elevation="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:text="Day 2 "
+                        android:textAlignment="center" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/dayButton2"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+
+                        android:adjustViewBounds="true"
+                        android:contentDescription="Day x"
+                        android:elevation="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/cloudy"
+
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_below="@id/dayButton2"
+                        android:elevation="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:text="Day 3 "
+                        android:textAlignment="center" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/dayButton3"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+
+                        android:adjustViewBounds="true"
+                        android:contentDescription="Day x"
+                        android:elevation="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/cloudy"
+
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_below="@id/dayButton3"
+                        android:elevation="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:text="Day 4 "
+                        android:textAlignment="center" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/dayButton4"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+
+                        android:adjustViewBounds="true"
+                        android:contentDescription="Day x"
+                        android:elevation="10dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/cloudy"
+
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:layout_below="@id/dayButton4"
+                        android:elevation="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:text="Day 5 "
+                        android:textAlignment="center" />
+                </RelativeLayout>
+            </LinearLayout>
+
+
+        </ScrollView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="273dp"
+        android:layout_height="274dp"
+        android:layout_marginStart="90dp"
+        android:background="#7FB8F6"
+        android:backgroundTint="#B1CCE3"
+        android:elevation="30dp"
+        android:paddingTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
+
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="184dp"
+            android:layout_below="@id/textView"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="0dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="#D7EFF1"
+            android:text="Recommended activities"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/linearButtons"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_below="@id/textView"
+            android:orientation="horizontal">
+
+
+            <RadioGroup
+                android:id="@+id/radioConditionsGroup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#C4D2EC"
+                android:checkedButton="@id/cloudyButton"
+
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/sunnyButton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="sunny"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/rainyButton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="rainy"
+                    android:textSize="16dp" />
+
+                <RadioButton
+                    android:id="@+id/cloudyButton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="cloudy"
+                    android:textSize="16dp" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

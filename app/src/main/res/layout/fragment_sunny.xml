@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".sunnyFragment">
+
+    <TextView
+        android:id="@+id/sunny_Fragment_Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/scrollViewSunny"
+        android:layout_centerHorizontal="true"
+        android:background="#D0D7F6"
+        android:elevation="10dp"
+        android:text="@string/sunnyDesc"
+        android:textAlignment="viewStart"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold">
+
+    </TextView>
+    <ScrollView
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollViewSunny"
+        android:contentDescription="sunny scroll view"
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+
+                    android:id="@+id/sunnyactivity1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_weight="1"
+                    android:background="@color/cloudy_background"
+                    android:backgroundTint="#7E6AF4"
+                    android:text="@string/cycle"
+                    android:textAlignment="viewStart"
+                    android:textSize="20sp" />
+
+                <RadioButton
+                    android:id="@+id/activity2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_weight="1"
+                    android:background="@color/cloudy_background"
+                    android:backgroundTint="#7E6AF4"
+                    android:text="@string/hike"
+                    android:textSize="20sp" />
+
+                <RadioButton
+                    android:id="@+id/activity3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_weight="1"
+                    android:background="@color/cloudy_background"
+                    android:backgroundTint="#7E6AF4"
+                    android:text="@string/swim"
+                    android:textSize="20sp" />
+
+                <RadioButton
+                    android:id="@+id/activity4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_weight="1"
+                    android:background="@color/cloudy_background"
+                    android:backgroundTint="#7E6AF4"
+                    android:text="@string/walk"
+                    android:textSize="20sp" />
+
+                <RadioButton
+                    android:id="@+id/activity5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_weight="1"
+                    android:background="@color/cloudy_background"
+                    android:backgroundTint="#7E6AF4"
+                    android:text="@string/upper_body"
+                    android:textSize="20sp" />
+            </RadioGroup>
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
