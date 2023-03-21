@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/popup_container"
+    android:layout_width="wrap_content"
+    android:layout_height="260dp"
+    android:background="#C3BAED"
+    android:elevation="60dp"
+    >
+
+    <TextView
+        android:id="@+id/equipment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titleInfo"
+        android:layout_centerInParent="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:text="Equipment needed: mat (not required)"
+        android:textColor="#3C3737"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/titleInfo"
+        android:layout_marginHorizontal="20dp"
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="91dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="16dp"
+        android:paddingTop="20dp"
+        android:text="Information"
+        android:textAlignment="center"
+        android:textColor="#3C3737"
+        android:textSize="44sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/diff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/equipment"
+        android:text="Difficulty"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:textColor="#3C3737"
+        android:textSize="20sp"
+        android:textStyle="bold">
+
+    </TextView>
+
+    <RatingBar
+
+        android:id="@+id/ratingBarDifficulty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/diff"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="difficultylevel"
+        android:isIndicator="true"
+        android:numStars="3"
+        android:progressDrawable="@drawable/fire_rating_bar"
+        android:rating="1"
+        android:stepSize="0.5" />
+
+</RelativeLayout>
