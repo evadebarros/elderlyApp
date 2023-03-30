@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/stepBystep"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EDE6FD">
+
+    <RelativeLayout
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/TitleText"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="70dp"
+            android:background="#5130E3"
+            android:contentDescription="text title for vinyasa flow"
+            android:paddingTop="35dp"
+            android:text="20 minute Vinyasa Flow "
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#FAF8F8"
+
+            android:textSize="24sp"
+
+            android:textStyle="bold" />
+
+        <ScrollView
+            android:id="@+id/scrollViewStepByStep"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="200dp"
+            android:contentDescription="Step by step workout"
+
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/warmupButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@color/cloudy_background"
+                        android:backgroundTint="#95FA57"
+                        android:text="10 minute circuit training"
+                        android:button="@drawable/baseline_question_mark_24"
+                        android:textSize="20sp" />
+
+                    <RadioButton
+                        android:id="@+id/exercise1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@color/cloudy_background"
+                        android:backgroundTint="#F44336"
+                        android:button="@drawable/baseline_question_mark_24"
+
+                        android:text="@string/yoga_for_joint_pain"
+                        android:textSize="20sp" />
+
+                    <RadioButton
+
+                        android:id="@+id/exercise2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@color/cloudy_background"
+                        android:backgroundTint="#F44336"
+                        android:button="@drawable/baseline_question_mark_24"
+
+                        android:text="@string/thirty_min_cardio"
+                        android:textAlignment="viewStart"
+                        android:textSize="20sp" />
+
+                    <RadioButton
+                        android:id="@+id/exercise3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@color/cloudy_background"
+                        android:backgroundTint="#F44336"
+                        android:button="@drawable/baseline_question_mark_24"
+
+                        android:text="@string/upper_body"
+                        android:textSize="20sp" />
+
+                    <RadioButton
+                        android:id="@+id/exercise4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@color/cloudy_background"
+                        android:backgroundTint="#F44336"
+                        android:button="@drawable/baseline_question_mark_24"
+
+                        android:text="@string/yoga_for_joint_pain"
+                        android:textSize="20sp" />
+                    <RadioButton
+                        android:id="@+id/exercise5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@color/cloudy_background"
+                        android:backgroundTint="#F44336"
+                        android:button="@drawable/baseline_question_mark_24"
+
+                        android:text=""
+                        android:textSize="20sp" />
+                    <RadioButton
+                        android:id="@+id/coolDown"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="2dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:background="@color/cloudy_background"
+                        android:backgroundTint="#95FA57"
+                        android:button="@drawable/baseline_question_mark_24"
+                        android:text="@string/yoga_20_minutes"
+                        android:textSize="20sp" />
+
+
+
+                </RadioGroup>
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/infoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="59dp"
+            android:layout_below="@+id/scrollViewStepByStep"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="340dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="13dp"
+            android:layout_marginBottom="210dp"
+            android:contentDescription="infoButton"
+            app:icon="@drawable/baseline_question_mark_24"
+            app:iconGravity="top"
+            app:iconPadding="20dp"
+            app:iconSize="40dp" />
+
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

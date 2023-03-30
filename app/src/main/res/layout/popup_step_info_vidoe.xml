@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/popup_step_info_video"
+    android:layout_width="wrap_content"
+    android:layout_height="300dp"
+    android:background="#C3BAED"
+    android:elevation="60dp"
+    >
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/armcircleImage"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_below="@+id/exerciseInfo"
+            android:layout_alignParentStart="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="47dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="30dp"
+            android:elevation="10dp"
+            app:srcCompat="@drawable/circle_arms" />
+
+        <TextView
+        android:id="@+id/exerciseInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titleInfo"
+        android:layout_centerInParent="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:text="Exercise Info"
+        android:textColor="#3C3737"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/titleInfo"
+        android:layout_marginHorizontal="20dp"
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="91dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="16dp"
+        android:paddingTop="20dp"
+        android:text="Information"
+        android:textAlignment="center"
+        android:textColor="#3C3737"
+        android:textSize="44sp"
+        android:textStyle="bold" />
+
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:id="@+id/video_step"
+            android:layout_width="287dp"
+            android:layout_height="147dp"
+            android:layout_below="@+id/armcircleImage"
+            android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="20dp"
+            app:autoPlay="false"
+
+            app:videoId="P8uHMMmWMHQ" />
+
+    </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
