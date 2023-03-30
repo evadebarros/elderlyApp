@@ -64,7 +64,7 @@
         android:isIndicator="true"
         android:numStars="3"
         android:progressDrawable="@drawable/fire_rating_bar"
-        android:rating="1"
+
         android:stepSize="0.5" />
 
 </RelativeLayout>

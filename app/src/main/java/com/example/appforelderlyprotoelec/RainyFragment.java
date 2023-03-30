@@ -13,7 +13,7 @@ import android.widget.Button;
 
 public class RainyFragment extends Fragment implements View.OnClickListener {
 
-    Button vinyasaButton;
+    Button circuitButton,vinyasaButton, upperBodyButton, cardioButton, yogaButton;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -22,6 +22,40 @@ public class RainyFragment extends Fragment implements View.OnClickListener {
         view= inflater.inflate(R.layout.fragment_rainy, container, false);
 
         vinyasaButton=(Button)view.findViewById(R.id.vinyasaButton);
+        upperBodyButton=(Button)view.findViewById(R.id.upperBodyButton);
+        cardioButton=(Button)view.findViewById(R.id.cardioButton);
+        yogaButton=(Button)view.findViewById(R.id.rainyActivity3);
+        circuitButton=(Button)view.findViewById(R.id.circuitButton);
+        circuitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(getActivity(), Exercise_routine_circuit_training.class);
+
+                startActivity(intent);
+            }
+        });
+        yogaButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(getActivity(), Exercise_routine_yoga_joint_pain.class);
+
+                startActivity(intent);
+            }
+        });
+        cardioButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(getActivity(), Routine_cardio.class);
+                startActivity(intent);
+            }
+        });
+        upperBodyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(getActivity(), Routine_upperbody.class);
+                startActivity(intent);
+            }
+        });
         vinyasaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

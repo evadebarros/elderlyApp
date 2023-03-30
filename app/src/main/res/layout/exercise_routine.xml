@@ -2,19 +2,21 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/exercisepage"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#EDE6FD">
 
     <RelativeLayout
         android:layout_width="409dp"
         android:layout_height="729dp"
+        android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:paddingTop="35dp"
             android:id="@+id/vinyasaTitleText"
             android:layout_width="match_parent"
             android:layout_height="110dp"
@@ -25,11 +27,14 @@
             android:layout_marginTop="70dp"
             android:background="#5130E3"
             android:contentDescription="text title for vinyasa flow"
+            android:paddingTop="35dp"
             android:text="20 minute Vinyasa Flow "
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="#FAF8F8"
+
             android:textSize="24sp"
+
             android:textStyle="bold" />
 
         <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
@@ -41,10 +46,24 @@
             android:layout_marginTop="20dp"
             app:autoPlay="false"
 
-            app:videoId="P8uHMMmWMHQ">
+            app:videoId="">
 
 
         </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
+
+        <Button
+            android:contentDescription="infoButton"
+            android:id="@+id/infoButton"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="13dp"
+            android:layout_marginBottom="235dp"
+            app:icon="@drawable/baseline_question_mark_24"
+            app:iconGravity="top"
+            app:iconPadding="20dp"
+            app:iconSize="40dp" />
 
 
     </RelativeLayout>

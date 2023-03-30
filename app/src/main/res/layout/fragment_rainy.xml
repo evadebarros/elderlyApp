@@ -16,8 +16,8 @@
         android:elevation="10dp"
         android:text="@string/rain_desc"
         android:textAlignment="viewStart"
-        android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textColor="#3C3737"
+        android:textSize="22dp"
         android:textStyle="bold">
 
     </TextView>
@@ -39,15 +39,15 @@
                     android:layout_height="wrap_content">
 
                     <RadioButton
-                        android:id="@+id/activity5"
+                        android:id="@+id/circuitButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginHorizontal="2dp"
                         android:layout_marginTop="4dp"
                         android:layout_weight="1"
                         android:background="@color/cloudy_background"
-                        android:backgroundTint="#7E6AF4"
-                        android:text="@string/ten_min_lunge"
+                        android:backgroundTint="#FAE957"
+                        android:text="10 minute circuit training"
                         android:textSize="20sp" />
 
                     <RadioButton
@@ -64,27 +64,27 @@
 
                     <RadioButton
 
-                        android:id="@+id/rainyActivity1"
+                        android:id="@+id/cardioButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginHorizontal="2dp"
                         android:layout_marginTop="4dp"
                         android:layout_weight="1"
                         android:background="@color/cloudy_background"
-                        android:backgroundTint="#7E6AF4"
+                        android:backgroundTint="#7EFF47"
                         android:text="@string/thirty_min_cardio"
                         android:textAlignment="viewStart"
                         android:textSize="20sp" />
 
                     <RadioButton
-                        android:id="@+id/rainyActivity2"
+                        android:id="@+id/upperBodyButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginHorizontal="2dp"
                         android:layout_marginTop="4dp"
                         android:layout_weight="1"
                         android:background="@color/cloudy_background"
-                        android:backgroundTint="#7E6AF4"
+                        android:backgroundTint="#73B2F6"
                         android:text="@string/upper_body"
                         android:textSize="20sp" />
 
@@ -98,6 +98,8 @@
                         android:layout_weight="1"
                         android:background="@color/cloudy_background"
                         android:backgroundTint="#7E6AF4"
+
+                        android:drawableRight="@drawable/yoga"
                         android:text="@string/yoga_20_minutes"
                         android:textSize="20sp" />
 

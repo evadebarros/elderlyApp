@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="#EBEFF3"
     android:orientation="vertical"
+    android:id="@+id/home"
     tools:context=".MainActivity">
 
     <RelativeLayout
@@ -20,7 +21,7 @@
 
         <TextView
             android:id="@+id/location"
-            android:layout_width="241dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="Your Location"
@@ -50,8 +51,8 @@
 
         <TextView
             android:id="@+id/currentTemp"
-            android:layout_width="97dp"
-            android:layout_height="31dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="degrees C"
             android:layout_below="@+id/location"
@@ -101,6 +102,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/hour1"
                         android:layout_width="75dp"
                         android:layout_height="80dp"
                         android:layout_below="@id/button"
@@ -108,7 +110,7 @@
                         android:paddingHorizontal="10dp"
                         android:text="Hour 1 "
                         android:textAlignment="center"
-                        android:textColor="@color/black" />
+                        android:textColor="#494444" />
                 </RelativeLayout>
 
 
@@ -130,6 +132,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/hour2"
                         android:layout_width="75dp"
                         android:layout_height="80dp"
                         android:layout_below="@id/button1"
@@ -162,16 +165,16 @@
                         />
 
                     <TextView
+
                         android:layout_width="75dp"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/button2"
                         android:elevation="10dp"
                         android:paddingHorizontal="10dp"
-
-
+                        android:id="@+id/hour3"
                         android:text="Hour 3 "
                         android:textAlignment="center"
-                        android:textColor="@color/black"
+                        android:textColor="#423C3C"
 
                         />
                 </RelativeLayout>
@@ -194,6 +197,7 @@
                         />
 
                     <TextView
+
                         android:layout_width="75dp"
                         android:layout_height="80dp"
                         android:layout_below="@id/button3"
@@ -202,6 +206,7 @@
                         android:paddingHorizontal="10dp"
                         android:text="Hour 4 "
                         android:textAlignment="center"
+                        android:id="@+id/hour4"
 
                         android:textColor="@color/black"
 
@@ -233,6 +238,7 @@
                         android:paddingHorizontal="10dp"
                         android:text="Hour 5 "
                         android:textAlignment="center"
+                        android:id="@+id/hour5"
 
 
                         android:textColor="@color/black"
@@ -258,12 +264,13 @@
                         />
 
                     <TextView
+                        android:id="@+id/hour6"
                         android:layout_width="75dp"
                         android:layout_height="80dp"
                         android:layout_below="@id/button5"
                         android:elevation="10dp"
                         android:paddingHorizontal="10dp"
-                        android:text="Hour 5 "
+                        android:text="Hour 6 "
                         android:textAlignment="center"
 
 
@@ -295,7 +302,8 @@
                         android:layout_below="@id/button6"
                         android:elevation="10dp"
                         android:paddingHorizontal="10dp"
-                        android:text="Hour 6 "
+                        android:text="Hour 7 "
+                        android:id="@+id/hour7"
                         android:textAlignment="center"
                         android:textColor="@color/black"
 
@@ -320,12 +328,13 @@
                         />
 
                     <TextView
+                        android:id="@+id/hour8"
                         android:layout_width="75dp"
                         android:layout_height="80dp"
                         android:layout_below="@id/button7"
                         android:elevation="10dp"
                         android:paddingHorizontal="10dp"
-                        android:text="Hour 7 "
+                        android:text="Hour 8 "
                         android:textAlignment="center"
                         android:textColor="@color/black"
 
@@ -405,6 +414,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/day1text"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_below="@id/dayButton"
@@ -432,6 +442,8 @@
                         />
 
                     <TextView
+                        android:id="@+id/day2text"
+
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_below="@id/dayButton1"
@@ -459,6 +471,8 @@
                         />
 
                     <TextView
+                        android:id="@+id/day3text"
+
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_below="@id/dayButton2"
@@ -486,6 +500,8 @@
                         />
 
                     <TextView
+                        android:id="@+id/day4text"
+
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_below="@id/dayButton3"
@@ -513,6 +529,8 @@
                         />
 
                     <TextView
+                        android:id="@+id/day5text"
+
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_below="@id/dayButton4"
@@ -533,7 +551,7 @@
         android:layout_marginStart="90dp"
         android:background="#7FB8F6"
         android:backgroundTint="#B1CCE3"
-        android:elevation="30dp"
+        android:elevation="50dp"
         android:paddingTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -559,6 +577,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="2dp"
             android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:backgroundTint="#D7EFF1"
             android:text="Recommended activities"
             android:textAlignment="center"
