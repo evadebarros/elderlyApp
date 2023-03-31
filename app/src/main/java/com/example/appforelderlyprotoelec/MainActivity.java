@@ -12,14 +12,19 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -28,6 +33,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,12 +45,17 @@ import java.io.InputStream;
 import java.io.StringReader;
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import okhttp3.OkHttpClient;
 
 public class MainActivity extends AppCompatActivity {
+    View popupView;
 
     String[] weather={"cloudy","rain","sunny"};
     String curWeather,curLocation,curTemp;
@@ -60,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
     private final String urlForecast ="https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=44.34&lon=10.99&appid=b5649972911c2d2ed660bcbb9fe073de";
     private final String appid = "b5649972911c2d2ed660bcbb9fe073de";
     DecimalFormat df = new DecimalFormat("#");
+    private HashMap<String,List<DayTime>> scheduleMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,11 +167,81 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setClickListener5DayForecast(ImageButton[] imageButtonArrayDaysForecast) {
+        HashMap<String, List<DayTime>> scheduleMap = new HashMap<>();
         for(int i =0;i<imageButtonArrayDaysForecast.length;i++){
+            int index =i;
             this.imageButtonArrayDaysForecast[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ((ImageButton) view).setBackground(getDrawable(R.drawable.cloudy));
+                    LayoutInflater inflater = (LayoutInflater)
+                            getSystemService(LAYOUT_INFLATER_SERVICE);
+
+
+                    View popupView = inflater.inflate(R.layout.popup_schedule_activity_days, null);
+                    findViewById(R.id.home).setAlpha((float) 0.7);
+                    //rb = (RatingBar) popupView.findViewById(R.id.ratingBarDifficulty);
+                    TimePicker tm = (TimePicker) popupView.findViewById(R.id.simpleTimePicker);
+                    Button save = (Button)popupView.findViewById(R.id.saveButton);
+                    TextInputEditText activityText= popupView.findViewById(R.id.activity_input);
+
+                    // create the popup window
+
+                    int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+                    int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                    boolean focusable = true; // lets taps outside the popup also dismiss it
+                    final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+                    save.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            String day = dayTextArray[index].getText().toString();
+                            int hour = tm.getHour();
+                            int minute= tm.getMinute();
+                            String activity =activityText.toString();
+                            LocalTime time = null;
+                            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                time = LocalTime.of(hour, minute);
+                            }
+                            DateTimeFormatter formatter = null;
+                            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                formatter = DateTimeFormatter.ofPattern("HH:mm");
+                            }
+                            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+
+                                DayTime dayTime= new DayTime(day, time,activity);
+                                if (scheduleMap.containsKey(day)) {
+                                    // If it does, add the new DayTime object to the list for that day
+                                    List<DayTime> scheduleList = scheduleMap.get(day);
+                                    scheduleList.add(dayTime);
+                                } else {
+                                    // If it doesn't, create a new list with the DayTime object and put it in the map
+                                    List<DayTime> scheduleList = new ArrayList<>();
+                                    scheduleList.add(dayTime);
+                                    scheduleMap.put(day, scheduleList);
+                                }
+
+                                // Print the contents of the map for verification
+                                System.out.println(scheduleMap);
+
+                                //System.out.println(day+" "+formattedTime);
+                            }
+
+                            //fix to have popup for success
+                            popupWindow.dismiss();
+                        }
+                    });
+                    popupWindow.setElevation(50);
+                    popupWindow.setAnimationStyle(-1);
+                    popupWindow.setHeight(1500);
+                    popupWindow.setWidth(1010);
+                    popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+                    popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                        @Override
+                        public void onDismiss() {
+                            findViewById(R.id.home).setAlpha((float) 1.0);
+
+                        }
+
+                    });
                 }
             });
         }
@@ -275,6 +358,10 @@ public class MainActivity extends AppCompatActivity {
                         JSONObject jsonObjectWeather = jsonArrayWeather.getJSONObject(0);
                         String description = jsonObjectWeather.getString("description");
                         String icon = jsonObjectWeather.getString("icon");
+                        if (icon.charAt(icon.length() - 1) == 'n') {
+                            // Replace the last character with "d" to get the daytime version of the icon
+                            icon = icon.substring(0, icon.length() - 1) + "d";
+                        }
                         set5DayForecastWeatherImage(imageButtonArrayDaysForecast[i],icon);
 
                     }
@@ -320,7 +407,10 @@ public class MainActivity extends AppCompatActivity {
                         JSONObject jsonObjectWeather = jsonArrayWeather.getJSONObject(0);
                         String description = jsonObjectWeather.getString("description");
                         String icon = jsonObjectWeather.getString("icon");
-
+                        if (icon.charAt(icon.length() - 1) == 'n') {
+                            // Replace the last character with "d" to get the daytime version of the icon
+                            icon = icon.substring(0, icon.length() - 1) + "d";
+                        }
                         setForecastWeatherImage(imageButtonArrayForecast[i],icon);
 
                     }
@@ -358,22 +448,26 @@ public class MainActivity extends AppCompatActivity {
                     String description=jsonObjectWeather.getString("description");
                     String condition = jsonObjectWeather.getString("main");
                     String icon = jsonObjectWeather.getString("icon");
+                    if (icon.charAt(icon.length() - 1) == 'n') {
+                        // Replace the last character with "d" to get the daytime version of the icon
+                        icon = icon.substring(0, icon.length() - 1) + "d";
+                    }
                     JSONObject jsonObjectMain= jsonResponse.getJSONObject("main");
                     double temp = jsonObjectMain.getDouble("temp")-273.15;
-                    JSONObject jsonObjectClouds = jsonResponse.getJSONObject("clouds");
-                    String clouds = jsonObjectClouds.getString("all");
                     JSONObject jsonObjectSys = jsonResponse.getJSONObject("sys");
                     //String countryName = jsonObjectSys.getString("country");
                     String cityName=  jsonResponse.getString("name");
                     output =df.format(temp) +"°C";
                     temperature.setText(output);
+
                     setCurrentWeatherImage(currentWeather,icon);
+
 
                      if(condition.equalsIgnoreCase("clouds")||condition.equalsIgnoreCase("fog")){
                          replaceFragment(new cloudyFragment());
                      }
 
-                     else if(condition.equalsIgnoreCase("rain")||condition.equalsIgnoreCase("snow")||condition.equalsIgnoreCase("drizzle")||condition.equalsIgnoreCase("thunderstorm")||curWeather.equalsIgnoreCase("mist")){
+                     else if(condition.equalsIgnoreCase("rain")||condition.equalsIgnoreCase("snow")||condition.equalsIgnoreCase("drizzle")||condition.equalsIgnoreCase("thunderstorm")||condition.equalsIgnoreCase("mist")){
                          replaceFragment(new RainyFragment());
                      }
 

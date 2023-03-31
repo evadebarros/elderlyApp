@@ -23,6 +23,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".FindDetailsActivity"/>
+        <activity android:name=".HomeActivity"/>
+        <activity android:name=".LoginActivity"/>
+        <activity android:name=".SettingsActivity"/>
+        <activity android:name=".WelcomeActivity"/>
         <activity android:name=".Exercise_routine"/>
         <activity android:name=".Routine_cardio"/>
         <activity android:name=".Exercise_routine_circuit_training"/>
