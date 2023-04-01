@@ -13,5 +13,6 @@
     <color name="text_color">#FF494444</color>
     <color name="datepicker_background_color">#EBEFF3</color>
     <color name="datepicker_text_color">#FF494444</color>
+    <color name="light_green">#05D805</color>
 
 </resources>

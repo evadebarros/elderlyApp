@@ -30,6 +30,7 @@
         <activity android:name=".WelcomeActivity"/>
         <activity android:name=".Exercise_routine"/>
         <activity android:name=".Routine_cardio"/>
+        <activity android:name=".WalkRoute"></activity>
         <activity android:name=".Exercise_routine_circuit_training"/>
         <activity android:name=".Exercise_routine_yoga_joint_pain"/>
         <activity android:name=".Routine_upperbody"/>

@@ -6,105 +6,91 @@
     tools:context=".RainyFragment">
 
 
-    <TextView
-        android:id="@+id/rain_Fragment_Text"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollViewRainy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/scrollViewRainy"
-        android:layout_centerHorizontal="true"
-        android:background="#D0D7F6"
-        android:elevation="10dp"
-        android:text="@string/rain_desc"
-        android:textAlignment="viewStart"
-        android:textColor="#3C3737"
-        android:textSize="22dp"
-        android:textStyle="bold">
 
-    </TextView>
-        <ScrollView
-            android:layout_marginTop="60dp"
-            android:id="@+id/scrollViewRainy"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:contentDescription="rainy scroll view">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="rainy scroll view"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            >
 
-            <LinearLayout
+            <RadioGroup
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
-                <RadioGroup
+                <RadioButton
+                    android:id="@+id/circuitButton"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_weight="1"
+                    android:background="#FFB8C9"
+                    android:text="10 minute circuit training"
+                    android:textColor="#454545"
+                    android:textSize="20sp" />
 
-                    <RadioButton
-                        android:id="@+id/circuitButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginHorizontal="2dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_weight="1"
-                        android:background="@color/cloudy_background"
-                        android:backgroundTint="#FAE957"
-                        android:text="10 minute circuit training"
-                        android:textSize="20sp" />
+                <RadioButton
+                    android:id="@+id/rainyActivity3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_weight="1"
+                    android:background="#EEC993FF"
+                    android:text="@string/yoga_for_joint_pain"
+                    android:textColor="#454545"
+                    android:textSize="20sp" />
 
-                    <RadioButton
-                        android:id="@+id/rainyActivity3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginHorizontal="2dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_weight="1"
-                        android:background="@color/cloudy_background"
-                        android:backgroundTint="#7E6AF4"
-                        android:text="@string/yoga_for_joint_pain"
-                        android:textSize="20sp" />
+                <RadioButton
 
-                    <RadioButton
+                    android:id="@+id/cardioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_weight="1"
+                    android:background="#FFB8C9"
+                    android:text="@string/thirty_min_cardio"
+                    android:textAlignment="viewStart"
 
-                        android:id="@+id/cardioButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginHorizontal="2dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_weight="1"
-                        android:background="@color/cloudy_background"
-                        android:backgroundTint="#7EFF47"
-                        android:text="@string/thirty_min_cardio"
-                        android:textAlignment="viewStart"
-                        android:textSize="20sp" />
+                    android:textColor="#454545"
+                    android:textSize="20sp" />
 
-                    <RadioButton
-                        android:id="@+id/upperBodyButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginHorizontal="2dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_weight="1"
-                        android:background="@color/cloudy_background"
-                        android:backgroundTint="#73B2F6"
-                        android:text="@string/upper_body"
-                        android:textSize="20sp" />
+                <RadioButton
+                    android:id="@+id/upperBodyButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_weight="1"
+                    android:background="#DA8086F6"
+                    android:text="@string/upper_body"
+                    android:textColor="#454545"
+                    android:textSize="20sp" />
 
 
-                    <RadioButton
-                        android:id="@+id/vinyasaButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginHorizontal="2dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_weight="1"
-                        android:background="@color/cloudy_background"
-                        android:backgroundTint="#7E6AF4"
+                <RadioButton
+                    android:id="@+id/vinyasaButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="2dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_weight="1"
+                    android:background="#EEC993FF"
+                    android:text="@string/yoga_20_minutes"
+                    android:textColor="#454545"
+                    android:textSize="20sp" />
+            </RadioGroup>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
-                        android:drawableRight="@drawable/yoga"
-                        android:text="@string/yoga_20_minutes"
-                        android:textSize="20sp" />
-
-                </RadioGroup>
-            </LinearLayout>
-        </ScrollView>
 
 </FrameLayout>

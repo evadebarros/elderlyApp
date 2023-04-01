@@ -2,6 +2,8 @@ package com.example.appforelderlyprotoelec;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.view.NestedScrollingChild;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -11,7 +13,7 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
+import androidx.core.content.ContextCompat;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView currentWeather;
     TextView location, temperature, hour1,hour2,hour3,hour4,hour5,hour6,hour7,hour8,day1,day2,day3,day4,day5;
     HorizontalScrollView hs;
-    ScrollView sv;
+    NestedScrollView sv;
 
     TextView[] textViewArray,dayTextArray;
     ImageButton[] imageButtonArrayForecast,imageButtonArrayDaysForecast;
@@ -82,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         RelativeLayout rl= (RelativeLayout)cl.findViewById(R.id.relativeLayout);
         RelativeLayout rl2= (RelativeLayout)cl.findViewById(R.id.relativeLayout2);
 
-        sv= (ScrollView)rl2.findViewById(R.id.scrollView);
+        sv= (NestedScrollView) rl2.findViewById(R.id.scrollView);
         hs= (HorizontalScrollView) rl.findViewById(R.id.horizontalScrollView);
         cloudyButton=findViewById(R.id.cloudyButton);
         sunnyButton=findViewById(R.id.sunnyButton);
@@ -131,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
         imageButtonArrayForecast=new ImageButton[]{but1,but2,but3,but4,but5,but6,but7,but8};
         imageButtonArrayDaysForecast= new ImageButton[]{daybut1,daybut2,daybut3,daybut4,daybut5};
         setClickListener5DayForecast(imageButtonArrayDaysForecast);
+        setClickListenerHoursForecast(imageButtonArrayForecast);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             LocalDateTime lt = LocalDateTime.now();
             ZonedDateTime zt= ZonedDateTime.now();
@@ -193,6 +196,10 @@ public class MainActivity extends AppCompatActivity {
                     save.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
+                            save.setBackgroundColor(ContextCompat.getColor(view.getContext(), R.color.light_green));
+                            save.setText("Scheduled");
+                            save.invalidate();
+
                             String day = dayTextArray[index].getText().toString();
                             int hour = tm.getHour();
                             int minute= tm.getMinute();
@@ -225,8 +232,8 @@ public class MainActivity extends AppCompatActivity {
                                 //System.out.println(day+" "+formattedTime);
                             }
 
-                            //fix to have popup for success
-                            popupWindow.dismiss();
+                            //popupWindow.dismiss();
+
                         }
                     });
                     popupWindow.setElevation(50);
@@ -246,6 +253,93 @@ public class MainActivity extends AppCompatActivity {
             });
         }
     }
+
+
+
+    private void setClickListenerHoursForecast(ImageButton[] imageButtonArrayForecast) {
+        HashMap<String, List<DayTime>> scheduleMap = new HashMap<>();
+        for(int i =0;i<imageButtonArrayForecast.length;i++){
+            int index =i;
+            this.imageButtonArrayForecast[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    LayoutInflater inflater = (LayoutInflater)
+                            getSystemService(LAYOUT_INFLATER_SERVICE);
+                    View popupView = inflater.inflate(R.layout.popup_schedule_activity_hours, null);
+                    findViewById(R.id.home).setAlpha((float) 0.7);
+                    //rb = (RatingBar) popupView.findViewById(R.id.ratingBarDifficulty);
+                    Button save = (Button)popupView.findViewById(R.id.saveButton);
+                    TextInputEditText activityText= popupView.findViewById(R.id.activity_input);
+
+                    // create the popup window
+
+                    int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+                    int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                    boolean focusable = true; // lets taps outside the popup also dismiss it
+                    final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+                    save.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            save.setBackgroundColor(ContextCompat.getColor(view.getContext(), R.color.light_green));
+                            save.setText("Scheduled");
+                            save.invalidate();
+
+                            String day = dayTextArray[0].getText().toString();
+                            String hourString = String.valueOf(textViewArray[index].getText());
+                            String temp[]=hourString.split(":");
+                            int hour= Integer.parseInt(temp[0]);
+                            int minute= Integer.parseInt(temp[1]);
+                            String activity =activityText.toString();
+                            LocalTime time = null;
+                            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                time = LocalTime.of(hour, minute);
+                            }
+                            DateTimeFormatter formatter = null;
+                            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                formatter = DateTimeFormatter.ofPattern("HH:mm");
+                            }
+                            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+
+                                DayTime dayTime= new DayTime(day, time,activity);
+                                if (scheduleMap.containsKey(day)) {
+                                    // If it does, add the new DayTime object to the list for that day
+                                    List<DayTime> scheduleList = scheduleMap.get(day);
+                                    scheduleList.add(dayTime);
+                                } else {
+                                    // If it doesn't, create a new list with the DayTime object and put it in the map
+                                    List<DayTime> scheduleList = new ArrayList<>();
+                                    scheduleList.add(dayTime);
+                                    scheduleMap.put(day, scheduleList);
+                                }
+
+                                // Print the contents of the map for verification
+                                System.out.println(scheduleMap);
+
+                                //System.out.println(day+" "+formattedTime);
+                            }
+
+                            //popupWindow.dismiss();
+
+                        }
+                    });
+                    popupWindow.setElevation(50);
+                    popupWindow.setAnimationStyle(-1);
+                    popupWindow.setHeight(1500);
+                    popupWindow.setWidth(1010);
+                    popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+                    popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                        @Override
+                        public void onDismiss() {
+                            findViewById(R.id.home).setAlpha((float) 1.0);
+
+                        }
+
+                    });
+                }
+            });
+        }
+    }
+
 
     private void makeDays(LocalDateTime lt, TextView[] dayTextArray) {
         for(int i = 0; i< this.dayTextArray.length; i++){

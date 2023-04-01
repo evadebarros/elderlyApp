@@ -3,29 +3,32 @@ package com.example.appforelderlyprotoelec;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ScrollView;
 
 
 public class RainyFragment extends Fragment implements View.OnClickListener {
 
     Button circuitButton,vinyasaButton, upperBodyButton, cardioButton, yogaButton;
+    NestedScrollView sv;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view;
         // Inflate the layout for this fragment
         view= inflater.inflate(R.layout.fragment_rainy, container, false);
-
-        vinyasaButton=(Button)view.findViewById(R.id.vinyasaButton);
-        upperBodyButton=(Button)view.findViewById(R.id.upperBodyButton);
-        cardioButton=(Button)view.findViewById(R.id.cardioButton);
-        yogaButton=(Button)view.findViewById(R.id.rainyActivity3);
-        circuitButton=(Button)view.findViewById(R.id.circuitButton);
+        sv= (NestedScrollView) view.findViewById(R.id.scrollViewRainy);
+        vinyasaButton=(Button)sv.findViewById(R.id.vinyasaButton);
+        upperBodyButton=(Button)sv.findViewById(R.id.upperBodyButton);
+        cardioButton=(Button)sv.findViewById(R.id.cardioButton);
+        yogaButton=(Button)sv.findViewById(R.id.rainyActivity3);
+        circuitButton=(Button)sv.findViewById(R.id.circuitButton);
         circuitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

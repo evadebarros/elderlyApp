@@ -39,5 +39,11 @@ dependencies {
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0'
     implementation 'com.android.volley:volley:1.2.1'
     implementation 'com.squareup.okhttp3:okhttp:4.9.2'
+    implementation 'org.osmdroid:osmdroid-android:6.1.15'
+    implementation 'org.osmdroid:osmdroid-mapsforge:6.1.15'
 
+    implementation files("libs/osmbonuspack_6.9.0.aar")
+    implementation 'org.osmdroid:osmdroid-android:6.1.15'
+    implementation 'org.apache.commons:commons-lang3:3.8.1'
+    implementation 'com.google.code.gson:gson:2.8.6'
 }

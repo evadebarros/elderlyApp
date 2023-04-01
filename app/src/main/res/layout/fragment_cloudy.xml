@@ -5,26 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".cloudyFragment">
 
-    <TextView
-        android:id="@+id/cloud_Fragment_Text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/scrollViewCloudy"
-        android:layout_centerHorizontal="true"
-        android:background="#D0D7F6"
-        android:elevation="10dp"
-        android:text="@string/cloudyDescr"
-        android:textAlignment="viewStart"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        android:textStyle="bold">
-
-    </TextView>
-    <ScrollView
-        android:layout_marginTop="60dp"
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollViewCloudy"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:contentDescription="cloudy scroll view"
 
         >
@@ -44,10 +28,10 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="2dp"
                     android:layout_weight="1"
-                    android:background="@color/cloudy_background"
-                    android:backgroundTint="#7E6AF4"
+                    android:background="#FFB8C9"
                     android:text="@string/thirty_min_cardio"
                     android:textAlignment="viewStart"
+                    android:textColor="#454545"
                     android:textSize="20sp" />
 
                 <RadioButton
@@ -57,9 +41,9 @@
                     android:layout_marginHorizontal="2dp"
                     android:layout_marginTop="4dp"
                     android:layout_weight="1"
-                    android:background="@color/cloudy_background"
-                    android:backgroundTint="#7E6AF4"
+                    android:background="#FF8FE8B6"
                     android:text="@string/cycle"
+                    android:textColor="#454545"
                     android:textSize="20sp" />
 
                 <RadioButton
@@ -69,9 +53,9 @@
                     android:layout_marginHorizontal="2dp"
                     android:layout_marginTop="4dp"
                     android:layout_weight="1"
-                    android:background="@color/cloudy_background"
-                    android:backgroundTint="#7E6AF4"
+                    android:background="#FF8FE8B6"
                     android:text="@string/hike"
+                    android:textColor="#454545"
                     android:textSize="20sp" />
 
                 <RadioButton
@@ -81,12 +65,13 @@
                     android:layout_marginHorizontal="2dp"
                     android:layout_marginTop="4dp"
                     android:layout_weight="1"
-                    android:background="@color/cloudy_background"
-                    android:backgroundTint="#7E6AF4"
+                    android:background="#FF8FE8B6"
                     android:text="@string/jog"
+                    android:textColor="#454545"
+
                     android:textSize="20sp" />
             </RadioGroup>
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </FrameLayout>
