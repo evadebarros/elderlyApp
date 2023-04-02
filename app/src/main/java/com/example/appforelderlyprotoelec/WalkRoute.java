@@ -1,5 +1,6 @@
 package com.example.appforelderlyprotoelec;
 
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -218,7 +219,7 @@ public class WalkRoute extends AppCompatActivity {
             protected void onPostExecute(Road road) {
                 super.onPostExecute(road);
                 // Add route overlay to first map
-                Polyline roadOverlay = RoadManager.buildRoadOverlay(road);
+                Polyline roadOverlay = RoadManager.buildRoadOverlay(road,Color.RED,10);
                 mapView.getOverlays().add(roadOverlay);
 
                 // Zoom to fit the route on first map
@@ -281,7 +282,7 @@ public class WalkRoute extends AppCompatActivity {
             protected void onPostExecute(Road road) {
                 super.onPostExecute(road);
                 // Add route overlay to second map
-                Polyline secondRoadOverlay = RoadManager.buildRoadOverlay(road);
+                Polyline secondRoadOverlay = RoadManager.buildRoadOverlay(road, Color.RED,10);
                 secondMapView.getOverlays().add(secondRoadOverlay);
 
                 // Zoom to fit the route on second map

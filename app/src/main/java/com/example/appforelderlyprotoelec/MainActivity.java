@@ -249,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
                                     NotificationCompat.Builder builder = new NotificationCompat.Builder(MainActivity.this, "My notification");
                                     builder.setContentTitle("Silver Strength");
                                     builder.setContentText("You have " + activity + " scheduled in 30 minutes! Get ready!");
-                                    builder.setSmallIcon(R.drawable.silver_strength_logo);
+                                    builder.setSmallIcon(R.drawable.fire);
                                     builder.setAutoCancel(true);
 
                                     NotificationManagerCompat managerCompat = NotificationManagerCompat.from(MainActivity.this);
