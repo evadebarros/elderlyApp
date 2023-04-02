@@ -6,7 +6,10 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
-
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION"/>
+    <uses-feature
+        android:name="android.hardware.sensor.stepcounter"
+        android:required="false"/>
 
     <application
         android:allowBackup="true"
@@ -34,7 +37,17 @@
         <activity android:name=".LoginActivity"/>
         <activity android:name=".SettingsActivity"/>
         <activity android:name=".Exercise_routine"/>
-
+        <activity android:name=".CalenderActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".StepperActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".HomeActivityStepper"
+            android:exported="true"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"></activity>
         <activity android:name=".Routine_cardio"/>
         <activity android:name=".WalkRoute"></activity>
         <activity android:name=".Exercise_routine_circuit_training"/>

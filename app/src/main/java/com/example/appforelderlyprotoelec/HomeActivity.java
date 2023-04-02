@@ -53,16 +53,16 @@ public class HomeActivity extends AppCompatActivity {
         calendarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(HomeActivity.this, CalendarActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(HomeActivity.this, CalenderActivity.class);
+                startActivity(intent);
             }
         });
 
         stepCounterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(HomeActivity.this, StepCounterActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(HomeActivity.this, StepperActivity.class);
+                startActivity(intent);
             }
         });
     }

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="tv_stepsTaken" type="id" />
+    <item name="calSpent" type = "id"/>
+    <item name="distTravelled" type = "id"/>
+    <item name="calories" type="id"/>
+    <item name="distance" type="id"/>
+    <item name="flame_logo" type="id"/>
+    <item name="distance_logo" type="id"/>
+    <item name="personal" type="id"/>
+    <item name="stepsLeft" type="id"/>
+    <item name="activityspinner" type="id"/>
+    <item name="hourspinner" type="id"/>
+    <item name="minspinner" type="id"/>
+    <item name="stepcounter_button" type="id"/>
+    <item name="calendar_button" type="id"/>
+    <item name="weather_button" type="id"/>
+    <item name="settings_button" type="id"/>
+    <item name="appname_text" type="id"/>
+    <item name="username_text" type="id"/>
+</resources>
