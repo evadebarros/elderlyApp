@@ -61,8 +61,7 @@
                         android:layout_marginHorizontal="2dp"
                         android:layout_marginTop="4dp"
                         android:layout_weight="1"
-                        android:background="@color/cloudy_background"
-                        android:backgroundTint="#95FA57"
+                        android:background="#FF8FE8B6"
                         android:text="10 minute circuit training"
                         android:button="@drawable/baseline_question_mark_24"
                         android:textSize="20sp" />
@@ -74,8 +73,8 @@
                         android:layout_marginHorizontal="2dp"
                         android:layout_marginTop="4dp"
                         android:layout_weight="1"
-                        android:background="@color/cloudy_background"
-                        android:backgroundTint="#F44336"
+                        android:background="#FFB8C9"
+
                         android:button="@drawable/baseline_question_mark_24"
 
                         android:text="@string/yoga_for_joint_pain"
@@ -89,8 +88,8 @@
                         android:layout_marginHorizontal="2dp"
                         android:layout_marginTop="4dp"
                         android:layout_weight="1"
-                        android:background="@color/cloudy_background"
-                        android:backgroundTint="#F44336"
+                        android:background="#FFB8C9"
+
                         android:button="@drawable/baseline_question_mark_24"
 
                         android:text="@string/thirty_min_cardio"
@@ -104,8 +103,8 @@
                         android:layout_marginHorizontal="2dp"
                         android:layout_marginTop="4dp"
                         android:layout_weight="1"
-                        android:background="@color/cloudy_background"
-                        android:backgroundTint="#F44336"
+                        android:background="#FFB8C9"
+
                         android:button="@drawable/baseline_question_mark_24"
 
                         android:text="@string/upper_body"
@@ -118,8 +117,8 @@
                         android:layout_marginHorizontal="2dp"
                         android:layout_marginTop="4dp"
                         android:layout_weight="1"
-                        android:background="@color/cloudy_background"
-                        android:backgroundTint="#F44336"
+                        android:background="#FFB8C9"
+
                         android:button="@drawable/baseline_question_mark_24"
 
                         android:text="@string/yoga_for_joint_pain"
@@ -131,8 +130,8 @@
                         android:layout_marginHorizontal="2dp"
                         android:layout_marginTop="4dp"
                         android:layout_weight="1"
-                        android:background="@color/cloudy_background"
-                        android:backgroundTint="#F44336"
+                        android:background="#FFB8C9"
+
                         android:button="@drawable/baseline_question_mark_24"
 
                         android:text=""
@@ -144,8 +143,8 @@
                         android:layout_marginHorizontal="2dp"
                         android:layout_marginTop="4dp"
                         android:layout_weight="1"
-                        android:background="@color/cloudy_background"
-                        android:backgroundTint="#95FA57"
+                        android:background="#FF8FE8B6"
+
                         android:button="@drawable/baseline_question_mark_24"
                         android:text="@string/yoga_20_minutes"
                         android:textSize="20sp" />
