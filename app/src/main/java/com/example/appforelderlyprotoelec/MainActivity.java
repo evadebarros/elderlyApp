@@ -2,18 +2,30 @@ package com.example.appforelderlyprotoelec;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.view.NestedScrollingChild;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+
 import androidx.core.content.ContextCompat;
+
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,6 +63,7 @@ import java.time.LocalTime;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -59,107 +72,112 @@ import okhttp3.OkHttpClient;
 public class MainActivity extends AppCompatActivity {
     View popupView;
 
-    String[] weather={"cloudy","rain","sunny"};
-    String curWeather,curLocation,curTemp;
-    Button cloudyButton, sunnyButton,rainyButton;
-    ImageButton but1, but2, but3, but4,but5,but6,but7,but8,daybut1,daybut2, daybut3, daybut4,daybut5,daybut6,daybut7,daybut8;
+    String[] weather = {"cloudy", "rain", "sunny"};
+    String curWeather, curLocation, curTemp;
+    Button cloudyButton, sunnyButton, rainyButton;
+    ImageButton but1, but2, but3, but4, but5, but6, but7, but8, daybut1, daybut2, daybut3, daybut4, daybut5, daybut6, daybut7, daybut8;
     ImageView currentWeather;
-    TextView location, temperature, hour1,hour2,hour3,hour4,hour5,hour6,hour7,hour8,day1,day2,day3,day4,day5;
+    TextView location, temperature, hour1, hour2, hour3, hour4, hour5, hour6, hour7, hour8, day1, day2, day3, day4, day5;
     HorizontalScrollView hs;
     NestedScrollView sv;
 
-    TextView[] textViewArray,dayTextArray;
-    ImageButton[] imageButtonArrayForecast,imageButtonArrayDaysForecast;
-    private final String url ="https://api.openweathermap.org/data/2.5/weather";
-    private final String urlForecast ="https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=44.34&lon=10.99&appid=b5649972911c2d2ed660bcbb9fe073de";
+    TextView[] textViewArray, dayTextArray;
+    ImageButton[] imageButtonArrayForecast, imageButtonArrayDaysForecast;
+    private final String url = "https://api.openweathermap.org/data/2.5/weather";
+    private final String urlForecast = "https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=44.34&lon=10.99&appid=b5649972911c2d2ed660bcbb9fe073de";
     private final String appid = "b5649972911c2d2ed660bcbb9fe073de";
     DecimalFormat df = new DecimalFormat("#");
-    private HashMap<String,List<DayTime>> scheduleMap;
+    private HashMap<String, List<DayTime>> scheduleMap;
+    private DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);  // Inflate the layout
-        ConstraintLayout cl= findViewById(R.id.home);
-        RelativeLayout rl= (RelativeLayout)cl.findViewById(R.id.relativeLayout);
-        RelativeLayout rl2= (RelativeLayout)cl.findViewById(R.id.relativeLayout2);
+        ConstraintLayout cl = findViewById(R.id.home);
+        RelativeLayout rl = (RelativeLayout) cl.findViewById(R.id.relativeLayout);
+        RelativeLayout rl2 = (RelativeLayout) cl.findViewById(R.id.relativeLayout2);
+        dbHelper = new DatabaseHelper(this);
+        sv = (NestedScrollView) rl2.findViewById(R.id.scrollView);
+        hs = (HorizontalScrollView) rl.findViewById(R.id.horizontalScrollView);
+        cloudyButton = findViewById(R.id.cloudyButton);
+        sunnyButton = findViewById(R.id.sunnyButton);
+        rainyButton = findViewById(R.id.rainyButton);
+        but1 = findViewById(R.id.button);
+        but2 = findViewById(R.id.button1);
+        but3 = findViewById(R.id.button2);
+        but4 = findViewById(R.id.button3);
+        but5 = findViewById(R.id.button4);
+        but6 = findViewById(R.id.button5);
+        but7 = findViewById(R.id.button6);
+        but8 = findViewById(R.id.button7);
+        daybut1 = findViewById(R.id.dayButton);
+        daybut2 = findViewById(R.id.dayButton1);
+        daybut3 = findViewById(R.id.dayButton2);
+        daybut4 = findViewById(R.id.dayButton3);
+        daybut5 = findViewById(R.id.dayButton4);
 
-        sv= (NestedScrollView) rl2.findViewById(R.id.scrollView);
-        hs= (HorizontalScrollView) rl.findViewById(R.id.horizontalScrollView);
-        cloudyButton=findViewById(R.id.cloudyButton);
-        sunnyButton=findViewById(R.id.sunnyButton);
-        rainyButton=findViewById(R.id.rainyButton);
-        but1=findViewById(R.id.button);
-        but2=findViewById(R.id.button1);
-        but3=findViewById(R.id.button2);
-        but4=findViewById(R.id.button3);
-        but5=findViewById(R.id.button4);
-        but6= findViewById(R.id.button5);
-        but7=findViewById(R.id.button6);
-        but8=findViewById(R.id.button7);
-        daybut1=findViewById(R.id.dayButton);
-        daybut2=findViewById(R.id.dayButton1);
-        daybut3=findViewById(R.id.dayButton2);
-        daybut4=findViewById(R.id.dayButton3);
-        daybut5=findViewById(R.id.dayButton4);
-
-        currentWeather=(ImageView) findViewById(R.id.currentWeatherView);
-        location=findViewById(R.id.location);
-        temperature=findViewById(R.id.currentTemp);
-        curLocation= getMyCurrentLocation();
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
+            NotificationChannel channel = new NotificationChannel("My notification","my notification",NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager=getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+        currentWeather = (ImageView) findViewById(R.id.currentWeatherView);
+        location = findViewById(R.id.location);
+        temperature = findViewById(R.id.currentTemp);
+        curLocation = getMyCurrentLocation();
         location.setText(curLocation);
         getWeatherDetails();
         getHourlyForecast();
         get5DayForecast();
-        hour1=(TextView) hs.findViewById(R.id.hour1);
-        hour2=(TextView) hs.findViewById(R.id.hour2);
-        hour3=(TextView) hs.findViewById(R.id.hour3);
-        hour4=(TextView) hs.findViewById(R.id.hour4);
-        hour5=(TextView) hs.findViewById(R.id.hour5);
-        hour6=(TextView) hs.findViewById(R.id.hour6);
-        hour7=(TextView) hs.findViewById(R.id.hour7);
-        hour8=(TextView) hs.findViewById(R.id.hour8);
+        hour1 = (TextView) hs.findViewById(R.id.hour1);
+        hour2 = (TextView) hs.findViewById(R.id.hour2);
+        hour3 = (TextView) hs.findViewById(R.id.hour3);
+        hour4 = (TextView) hs.findViewById(R.id.hour4);
+        hour5 = (TextView) hs.findViewById(R.id.hour5);
+        hour6 = (TextView) hs.findViewById(R.id.hour6);
+        hour7 = (TextView) hs.findViewById(R.id.hour7);
+        hour8 = (TextView) hs.findViewById(R.id.hour8);
 
-        day1=(TextView) sv.findViewById(R.id.day1text);
-        day2=(TextView) sv.findViewById(R.id.day2text);
-        day3=(TextView) sv.findViewById(R.id.day3text);
-        day4=(TextView) sv.findViewById(R.id.day4text);
-        day5=(TextView) sv.findViewById(R.id.day5text);
+        day1 = (TextView) sv.findViewById(R.id.day1text);
+        day2 = (TextView) sv.findViewById(R.id.day2text);
+        day3 = (TextView) sv.findViewById(R.id.day3text);
+        day4 = (TextView) sv.findViewById(R.id.day4text);
+        day5 = (TextView) sv.findViewById(R.id.day5text);
 
 
-
-        dayTextArray= new TextView[]{day1,day2,day3,day4,day5};
-        textViewArray= new TextView[]{hour1, hour2, hour3, hour4, hour5, hour6, hour7, hour8};
-        imageButtonArrayForecast=new ImageButton[]{but1,but2,but3,but4,but5,but6,but7,but8};
-        imageButtonArrayDaysForecast= new ImageButton[]{daybut1,daybut2,daybut3,daybut4,daybut5};
+        dayTextArray = new TextView[]{day1, day2, day3, day4, day5};
+        textViewArray = new TextView[]{hour1, hour2, hour3, hour4, hour5, hour6, hour7, hour8};
+        imageButtonArrayForecast = new ImageButton[]{but1, but2, but3, but4, but5, but6, but7, but8};
+        imageButtonArrayDaysForecast = new ImageButton[]{daybut1, daybut2, daybut3, daybut4, daybut5};
         setClickListener5DayForecast(imageButtonArrayDaysForecast);
         setClickListenerHoursForecast(imageButtonArrayForecast);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             LocalDateTime lt = LocalDateTime.now();
-            ZonedDateTime zt= ZonedDateTime.now();
-            System.out.println("LOCAL"+zt);
+            ZonedDateTime zt = ZonedDateTime.now();
+            System.out.println("LOCAL" + zt);
             hour1.setText("Now");
-            makeDays(lt,dayTextArray);
-            makeHours(lt,textViewArray);
+            makeDays(lt, dayTextArray);
+            makeHours(lt, textViewArray);
         }
         //LocalDateTime lt = LocalDateTime.now();
 
         //replaceFragment(new cloudyFragment());
-        rainyButton.setOnClickListener(new View.OnClickListener(){
+        rainyButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
                 replaceFragment(new RainyFragment());
             }
         });
-        cloudyButton.setOnClickListener(new View.OnClickListener(){
+        cloudyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 replaceFragment(new cloudyFragment());
             }
 
         });
-        sunnyButton.setOnClickListener(new View.OnClickListener(){
+        sunnyButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -171,8 +189,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void setClickListener5DayForecast(ImageButton[] imageButtonArrayDaysForecast) {
         HashMap<String, List<DayTime>> scheduleMap = new HashMap<>();
-        for(int i =0;i<imageButtonArrayDaysForecast.length;i++){
-            int index =i;
+        for (int i = 0; i < imageButtonArrayDaysForecast.length; i++) {
+            int index = i;
             this.imageButtonArrayDaysForecast[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -184,8 +202,8 @@ public class MainActivity extends AppCompatActivity {
                     findViewById(R.id.home).setAlpha((float) 0.7);
                     //rb = (RatingBar) popupView.findViewById(R.id.ratingBarDifficulty);
                     TimePicker tm = (TimePicker) popupView.findViewById(R.id.simpleTimePicker);
-                    Button save = (Button)popupView.findViewById(R.id.saveButton);
-                    TextInputEditText activityText= popupView.findViewById(R.id.activity_input);
+                    Button save = (Button) popupView.findViewById(R.id.saveButton);
+                    TextInputEditText activityText = popupView.findViewById(R.id.activity_input);
 
                     // create the popup window
 
@@ -202,40 +220,61 @@ public class MainActivity extends AppCompatActivity {
 
                             String day = dayTextArray[index].getText().toString();
                             int hour = tm.getHour();
-                            int minute= tm.getMinute();
-                            String activity =activityText.toString();
-                            LocalTime time = null;
-                            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                                time = LocalTime.of(hour, minute);
-                            }
-                            DateTimeFormatter formatter = null;
-                            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                                formatter = DateTimeFormatter.ofPattern("HH:mm");
-                            }
-                            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                            int minute = tm.getMinute();
+                            String activity = activityText.getText().toString();
 
-                                DayTime dayTime= new DayTime(day, time,activity);
-                                if (scheduleMap.containsKey(day)) {
-                                    // If it does, add the new DayTime object to the list for that day
-                                    List<DayTime> scheduleList = scheduleMap.get(day);
-                                    scheduleList.add(dayTime);
-                                } else {
-                                    // If it doesn't, create a new list with the DayTime object and put it in the map
-                                    List<DayTime> scheduleList = new ArrayList<>();
-                                    scheduleList.add(dayTime);
-                                    scheduleMap.put(day, scheduleList);
+                            Schedule schedule = new Schedule();
+                            schedule.setDay(day);
+                            schedule.setTime(hour + ":" + minute);
+                            schedule.setActivity(activity);
+
+                            // Set the alarm time to 30 minutes before the scheduled time
+                            Calendar calendar = Calendar.getInstance();
+                            calendar.setTimeInMillis(System.currentTimeMillis());
+                            //calendar.set(Calendar.DAY_OF_WEEK, index + 1);
+                            calendar.set(Calendar.HOUR_OF_DAY, tm.getHour());
+                            calendar.set(Calendar.MINUTE, tm.getMinute() - 30);
+                            calendar.add(Calendar.MINUTE, -30);
+
+                            new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    long timeDiff = calendar.getTimeInMillis() - System.currentTimeMillis();
+                                    try {
+                                        Thread.sleep(30000);
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    }
+
+                                    NotificationCompat.Builder builder = new NotificationCompat.Builder(MainActivity.this, "My notification");
+                                    builder.setContentTitle("Silver Strength");
+                                    builder.setContentText("You have " + activity + " scheduled in 30 minutes! Get ready!");
+                                    builder.setSmallIcon(R.drawable.silver_strength_logo);
+                                    builder.setAutoCancel(true);
+
+                                    NotificationManagerCompat managerCompat = NotificationManagerCompat.from(MainActivity.this);
+                                    if (ActivityCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                                        // TODO: Consider calling
+                                        //    ActivityCompat#requestPermissions
+                                        // here to request the missing permissions, and then overriding
+                                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                                        //                                          int[] grantResults)
+                                        // to handle the case where the user grants the permission. See the documentation
+                                        // for ActivityCompat#requestPermissions for more details.
+                                        return;
+                                    }
+                                    managerCompat.notify(1, builder.build());
+
+                                    dbHelper.addActivity(schedule);
+                                    printActivitiesFromDatabase(); // Call the method to print data to the console
                                 }
+                            }).start();
 
-                                // Print the contents of the map for verification
-                                System.out.println(scheduleMap);
-
-                                //System.out.println(day+" "+formattedTime);
-                            }
-
-                            //popupWindow.dismiss();
-
+                            popupWindow.dismiss();
                         }
+
                     });
+
                     popupWindow.setElevation(50);
                     popupWindow.setAnimationStyle(-1);
                     popupWindow.setHeight(1500);
@@ -619,8 +658,13 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+    private void printActivitiesFromDatabase() {
+        List<String> activities = dbHelper.getAllActivities();
+        for (String activity : activities) {
+            System.out.println(activity);
+        }
 
-
+    }
 
 }
 

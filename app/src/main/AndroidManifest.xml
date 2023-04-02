@@ -4,6 +4,10 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -15,7 +19,7 @@
         android:theme="@style/Theme.AppForElderlyProtoElec"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".WelcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,12 +27,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".CreateAccountActivity"></activity>
+        <activity android:name=".MainActivity"></activity>
         <activity android:name=".FindDetailsActivity"/>
         <activity android:name=".HomeActivity"/>
         <activity android:name=".LoginActivity"/>
         <activity android:name=".SettingsActivity"/>
-        <activity android:name=".WelcomeActivity"/>
         <activity android:name=".Exercise_routine"/>
+
         <activity android:name=".Routine_cardio"/>
         <activity android:name=".WalkRoute"></activity>
         <activity android:name=".Exercise_routine_circuit_training"/>

@@ -78,7 +78,22 @@
                     android:layout_height="wrap_content"
                     android:hint="Enter your email here"
                     android:textStyle="italic" />
+
+                <Button
+                    android:id="@+id/verify_email_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:text="Verify Email"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintTop_toBottomOf="@+id/confirm_password_input"
+                    app:layout_constraintVertical_bias="1.0" />
+
+
             </com.google.android.material.textfield.TextInputLayout>
+
 
             <TextView
                 android:id="@+id/enter_password_text"
@@ -103,6 +118,30 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/enter_password_text" />
 
+
+            <TextView
+                android:id="@+id/confirm_password_text"
+                android:layout_width="203dp"
+                android:layout_height="43dp"
+                android:layout_marginTop="28dp"
+                android:text="Confirm Password :"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/password_input" />
+
+            <EditText
+                android:id="@+id/confirm_password_input"
+                android:layout_width="244dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:inputType="textPassword"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/confirm_password_text" />
+
             <Button
                 android:id="@+id/saveButton_create"
                 android:layout_width="wrap_content"
@@ -113,7 +152,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/password_input"
+                app:layout_constraintTop_toBottomOf="@+id/confirm_password_input"
                 app:layout_constraintVertical_bias="1.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
